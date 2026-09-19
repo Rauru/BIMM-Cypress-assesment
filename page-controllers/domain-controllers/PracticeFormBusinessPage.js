@@ -43,6 +43,17 @@ class PracticeFormBusinessPage{
       .checkResultValue('State and City', `${user.state} ${user.city}`);
     return this;
   }
+
+  checkRequiredFieldErrors(){
+    this.practiceFormPage
+      .checkFormWasValidated()
+      .checkFieldIsInvalid('firstName')
+      .checkFieldIsInvalid('lastName')
+      .checkFieldIsInvalid('gender')
+      .checkFieldIsInvalid('mobile')
+      .checkResultsModalIsNotDisplayed();
+    return this;
+  }
 }
 
 export default PracticeFormBusinessPage;

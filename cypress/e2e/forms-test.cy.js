@@ -22,4 +22,10 @@ describe('Test forms elements functionality', ()=>{
                        .checkSubmittedData(userData);
     })
 
+    it('Check empty form submission shows required field errors', ()=>{
+        cy.visit('/automation-practice-form');
+        practiceFormPOM.submitForm()
+                       .checkRequiredFieldErrors();
+    })
+
 })

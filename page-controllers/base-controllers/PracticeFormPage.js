@@ -1,92 +1,140 @@
 const exactText = (text) => new RegExp(`^${Cypress._.escapeRegExp(text)}$`);
 
+const INVALID_RED = 'rgb(220, 53, 69)';
+
+const selectors = {
+  form: '#userForm',
+  firstName: '#firstName',
+  lastName: '#lastName',
+  email: '#userEmail',
+  gender: 'input[name="gender"]',
+  genderLabel: 'label[for^="gender-radio"]',
+  mobile: '#userNumber',
+  dateOfBirthInput: '#dateOfBirthInput',
+  datePickerMonth: '.react-datepicker__month-select',
+  datePickerYear: '.react-datepicker__year-select',
+  // Day classes are zero-padded to 3 digits (--005, --015), and days from the
+  // neighbouring months share the same class, so exclude those.
+  datePickerDay: (day) => `.react-datepicker__day--${String(day).padStart(3, '0')}:not(.react-datepicker__day--outside-month)`,
+  subjectsInput: '#subjectsInput',
+  subjectsOption: '#subjectsContainer [role="option"]',
+  hobbyLabel: 'label[for^="hobbies-checkbox"]',
+  currentAddress: '#currentAddress',
+  stateInput: '#state input',
+  stateOption: '#state [role="option"]',
+  cityInput: '#city input',
+  cityOption: '#city [role="option"]',
+  submit: '#submit',
+  resultsModal: '.modal-content',
+  resultsModalTitle: '#example-modal-sizes-title-lg',
+  resultsCell: '.modal-body td',
+};
+
 class PracticeFormPage{
 
   fillFirstName(firstName){
-    cy.get('#firstName').type(firstName);
+    cy.get(selectors.firstName).type(firstName);
     return this;
   }
 
   fillLastName(lastName){
-    cy.get('#lastName').type(lastName);
+    cy.get(selectors.lastName).type(lastName);
     return this;
   }
 
   fillEmail(email){
-    cy.get('#userEmail').type(email);
+    cy.get(selectors.email).type(email);
     return this;
   }
 
   selectGender(gender){
-    cy.contains('label[for^="gender-radio"]', exactText(gender)).click();
+    cy.contains(selectors.genderLabel, exactText(gender)).click();
     return this;
   }
 
   fillMobile(mobile){
-    cy.get('#userNumber').type(mobile);
+    cy.get(selectors.mobile).type(mobile);
     return this;
   }
 
   // date = { day: 5, month: 'January', year: '1990' }
   selectDateOfBirth(date){
-    // Day classes are zero-padded to 3 digits (--005, --015), and days from the
-    // neighbouring months share the same class, so exclude those.
-    const day = String(date.day).padStart(3, '0');
-    cy.get('#dateOfBirthInput').click();
-    cy.get('.react-datepicker__month-select').select(date.month);
+    cy.get(selectors.dateOfBirthInput).click();
+    cy.get(selectors.datePickerMonth).select(date.month);
     // A number passed to select() is treated as an option index, so force a string.
-    cy.get('.react-datepicker__year-select').select(String(date.year));
-    cy.get(`.react-datepicker__day--${day}:not(.react-datepicker__day--outside-month)`).click();
+    cy.get(selectors.datePickerYear).select(String(date.year));
+    cy.get(selectors.datePickerDay(date.day)).click();
     return this;
   }
 
   // Subjects, State and City are react-select dropdowns, not <select> elements:
   fillSubjects(subjects){
     subjects.forEach((subject) => {
-      cy.get('#subjectsInput').type(subject);
-      cy.contains('#subjectsContainer [role="option"]', exactText(subject)).click();
+      cy.get(selectors.subjectsInput).type(subject);
+      cy.contains(selectors.subjectsOption, exactText(subject)).click();
     });
     return this;
   }
 
   selectHobbies(hobbies){
     hobbies.forEach((hobby) => {
-      cy.contains('label[for^="hobbies-checkbox"]', exactText(hobby)).click();
+      cy.contains(selectors.hobbyLabel, exactText(hobby)).click();
     });
     return this;
   }
 
   fillCurrentAddress(address){
-    cy.get('#currentAddress').type(address);
+    cy.get(selectors.currentAddress).type(address);
     return this;
   }
 
   selectState(state){
-    cy.get('#state input').type(state);
-    cy.contains('#state [role="option"]', exactText(state)).click();
+    cy.get(selectors.stateInput).type(state);
+    cy.contains(selectors.stateOption, exactText(state)).click();
     return this;
   }
 
   // City stays disabled until a state has been selected.
   selectCity(city){
-    cy.get('#city input').type(city);
-    cy.contains('#city [role="option"]', exactText(city)).click();
+    cy.get(selectors.cityInput).type(city);
+    cy.contains(selectors.cityOption, exactText(city)).click();
     return this;
   }
 
   submitForm(){
-    cy.get('#submit').click();
+    cy.get(selectors.submit).click();
     return this;
   }
 
   checkResultsModalTitle(title){
-    cy.get('#example-modal-sizes-title-lg').should('have.text', title);
+    cy.get(selectors.resultsModalTitle).should('have.text', title);
     return this;
   }
 
   // The results modal is a Label | Values table; find the label cell, check the cell next to it.
   checkResultValue(label, value){
-    cy.contains('.modal-body td', exactText(label)).next().should('have.text', value);
+    cy.contains(selectors.resultsCell, exactText(label)).next().should('have.text', value);
+    return this;
+  }
+
+  checkResultsModalIsNotDisplayed(){
+    cy.get(selectors.resultsModal).should('not.exist');
+    return this;
+  }
+
+  // After a submit attempt the form gets the Bootstrap "was-validated" class,
+  // which colours every :invalid field red.
+  checkFormWasValidated(){
+    cy.get(selectors.form).should('have.class', 'was-validated');
+    return this;
+  }
+
+  // field is a key of selectors, e.g. 'firstName' or 'gender' (checks all 3 radios).
+  checkFieldIsInvalid(field){
+    cy.get(selectors[field]).each(($el) => {
+      cy.wrap($el).should('match', ':invalid')
+        .and('have.css', 'border-color', INVALID_RED);
+    });
     return this;
   }
 }
