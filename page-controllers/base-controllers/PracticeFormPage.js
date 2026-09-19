@@ -1,4 +1,4 @@
-const exactText = (text) => new RegExp(`^${Cypress._.escapeRegExp(text)}$`);
+import { exactText } from '../../cypress/support/helpers';
 
 const INVALID_RED = 'rgb(220, 53, 69)';
 
