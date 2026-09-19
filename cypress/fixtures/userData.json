@@ -1,7 +1,20 @@
 {
     "fullName": "John Doe",
+    "firstName": "John",
+    "lastName": "Doe",
     "email": "john.doe@example.com",
+    "gender": "Male",
+    "mobile": "5551234567",
+    "dateOfBirth": {
+        "day": 15,
+        "month": "January",
+        "year": "1990"
+    },
+    "subjects": ["Maths", "English"],
+    "hobbies": ["Sports", "Music"],
     "currentAddress": "123 Main St, Anytown, USA",
     "permanentAddress": "456 Elm St, Othertown, USA",
+    "state": "NCR",
+    "city": "Delhi",
     "wrongEmail": "john.doeexample.com"
 }

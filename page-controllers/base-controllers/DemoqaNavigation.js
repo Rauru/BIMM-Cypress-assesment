@@ -1,25 +1,26 @@
+const exactText = (text) => new RegExp(`^${Cypress._.escapeRegExp(text)}$`);
+
 class DemoqaPage{
-  
-  checkCardIsVisible(card) { 
-     cy.contains('.top-card', card).should('be.visible');
+
+  checkCardIsVisible(card) {
+     cy.contains('.top-card', exactText(card)).should('be.visible');
      return this;
   }
 
   clickCategoryCard(card){
-    cy.contains('.top-card', card).click();
-    return this;
-  }
-  
-  checkDropdownIsVisible(name){
-    cy.contains('.menu-list .text', name).should('be.visible');
+    cy.contains('.top-card', exactText(card)).click();
     return this;
   }
 
-  clickDropdown(nme){
-    cy.contains('.menu-list .text', name).click();
+  checkMenuItemIsVisible(name){
+    cy.contains('.menu-list .text', exactText(name)).should('be.visible');
     return this;
   }
-   
+
+  clickMenuItem(name){
+    cy.contains('.menu-list .text', exactText(name)).click();
+    return this;
+  }
 }
 
 export default DemoqaPage;

@@ -11,9 +11,9 @@ class HomepageBusinessPage{
     return this;
   }
 
-  clickDropdown(name){
-    this.demoqaPage.checkDropdownIsVisible(name);
-    this.demoqaPage.clickDropdown(name);
+  clickMenuItem(name){
+    this.demoqaPage.checkMenuItemIsVisible(name);
+    this.demoqaPage.clickMenuItem(name);
     return this; 
   }
 }
