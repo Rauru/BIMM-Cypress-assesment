@@ -25,7 +25,7 @@ Found on https://demoqa.com/automation-practice-form, September 2026, Chrome and
 
 **Actual:** the Email field turns red with a warning icon and the dialog does not open. `john.doe@example.photography` is also rejected, while `john.doe@example.co.uk` is accepted.
 
-**Evidence:** [`docs/evidence/email-museum-rejected.png`](docs/evidence/email-museum-rejected.png). The input's `pattern` attribute only allows 2–5 letters after the last dot: `…\.([a-zA-Z]{2,5})$`.
+**Evidence:** [`evidence/email-museum-rejected.png`](evidence/email-museum-rejected.png). The input's `pattern` attribute only allows 2–5 letters after the last dot: `…\.([a-zA-Z]{2,5})$`.
 
 **Rationale:** real users with valid addresses (`.museum`, `.photography`, `.technology`, …) cannot register and have no workaround except using a different email. It affects a minority of users, so it is not High.
 
@@ -54,7 +54,7 @@ Found on https://demoqa.com/automation-practice-form, September 2026, Chrome and
 | Picture       | `#uploadPicture`                          |
 | State         | `#react-select-3-input` (inside `#state`) |
 
-**Evidence:** axe-core reports rule `label` (critical) for all 4 inputs and `label-title-only` (serious) for Subjects and State. [`cypress/e2e/accessibility-test.cy.js`](cypress/e2e/accessibility-test.cy.js) logs them on every run.
+**Evidence:** axe-core reports rule `label` (critical) for all 4 inputs and `label-title-only` (serious) for Subjects and State. [`cypress/e2e/accessibility-test.cy.js`](../cypress/e2e/accessibility-test.cy.js) logs them on every run.
 
 **Rationale:** screen reader users cannot tell what these fields are for, and it fails WCAG 2 Level A (4.1.2 Name, Role, Value), which is a legal risk for real products. The fix is small (add `for` or `aria-label`).
 

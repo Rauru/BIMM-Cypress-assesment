@@ -2,6 +2,11 @@
 
 Cypress + JavaScript tests for [demoqa.com](https://demoqa.com): forms, selections, dialogs and accessibility checks (15 tests).
 
+## Documents
+
+- [Summary report](docs/SUMMARY.md): approach, results, flakiness handling and recommendations
+- [Defects](docs/DEFECTS.md): defects found, with steps to reproduce and evidence
+
 ## Prerequisites
 
 - Node.js 22+
@@ -10,8 +15,8 @@ Cypress + JavaScript tests for [demoqa.com](https://demoqa.com): forms, selectio
 ## Install
 
 ```bash
-git clone https://github.com/Rauru/BIMM-Cypress-assesment.git
-cd BIMM-Cypress-assesment
+git clone https://github.com/Rauru/BIMM-Cypress-assessment.git
+cd BIMM-Cypress-assessment
 npm install
 ```
 

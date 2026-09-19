@@ -12,7 +12,7 @@ describe('Test accessibility of key components', () => {
 
   it('Check practice form has no new critical or serious accessibility violations', () => {
     homepagePOM.clickCategoryCard('Forms').clickMenuItem('Practice Form');
-    // Known DemoQA defects (see DEFECTS.md): Date of Birth, Subjects, Picture and State inputs
+    // Known DemoQA defects (see docs/DEFECTS.md): Date of Birth, Subjects, Picture and State inputs
     // are not linked to their labels, so screen readers cannot name them.
     cy.checkAccessibility('#userForm', { knownIssues: ['label', 'label-title-only'] });
   });
