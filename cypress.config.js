@@ -1,7 +1,19 @@
 const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
+  // HTML report with charts and embedded failure screenshots, written to cypress/reports/index.html
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'cypress/reports',
+    reportPageTitle: 'DemoQA Cypress Test Report',
+    charts: true,
+    embeddedScreenshots: true,
+    inlineAssets: true,
+  },
   e2e: {
+    setupNodeEvents(on) {
+      require('cypress-mochawesome-reporter/plugin')(on);
+    },
     baseUrl: 'https://demoqa.com',
     defaultCommandTimeout: 10000,
     pageLoadTimeout: 20000,
