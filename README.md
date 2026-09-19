@@ -7,6 +7,19 @@ Cypress + JavaScript tests for [demoqa.com](https://demoqa.com): forms, selectio
 - [Summary report](docs/SUMMARY.md): approach, results, flakiness handling and recommendations
 - [Defects](docs/DEFECTS.md): defects found, with steps to reproduce and evidence
 
+## Completed tasks
+
+- [x] **Framework setup:** Cypress + JavaScript, page objects, fixtures and utilities, one-command run (`npm test`), base URL and timeouts in config
+- [x] **Code quality:** ESLint and Prettier
+- [x] **Automated tests:** 15 tests covering forms, selections and dialogs, with edge cases
+- [x] **Data-driven tests:** fixture data and a random data generator
+- [x] **Flakiness handling:** condition-based waits, retries, blocked ad hosts
+- [x] **Accessibility checks:** axe-core scans of the Practice Form and a modal
+- [x] **Execution and analysis:** HTML test report and a results summary
+- [x] **Defect reporting:** 3 defects in [DEFECTS.md](docs/DEFECTS.md)
+- [x] **Recommendations:** in the [summary report](docs/SUMMARY.md)
+- [x] **CI:** GitHub Actions runs lint, format check and the suite in Chrome on every push
+
 ## Prerequisites
 
 - Node.js 22+
