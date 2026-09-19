@@ -17,12 +17,14 @@ describe('Test elements functionality', ()=>{
     })
 
     it('Check impressive radio button can be selected', ()=>{
-        cy.visit('/radio-button');
+        homepagePOM.clickCategoryCard('Elements')
+                   .clickMenuItem('Radio Button');
         elementsPOM.selectRadioButton('Impressive');
     })
 
     it('Check no radio button is disabled', ()=>{
-        cy.visit('/radio-button');
+        homepagePOM.clickCategoryCard('Elements')
+                   .clickMenuItem('Radio Button');
         elementsPOM.checkNoRadioButtonIsDisabled();
     })
 

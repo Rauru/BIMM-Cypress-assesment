@@ -19,21 +19,24 @@ describe('Test modal dialogs functionality', ()=>{
     })
 
     it('Check large modal opens with its content and closes', ()=>{
-        cy.visit('/modal-dialogs');
+        homepagePOM.clickCategoryCard('Alerts, Frame & Windows')
+                   .clickMenuItem('Modal Dialogs');
         modalDialogsPOM.openLargeModal()
                        .checkLargeModalContent()
                        .closeLargeModal();
     })
 
     it('Check small modal closes with the X icon', ()=>{
-        cy.visit('/modal-dialogs');
+        homepagePOM.clickCategoryCard('Alerts, Frame & Windows')
+                   .clickMenuItem('Modal Dialogs');
         modalDialogsPOM.openSmallModal()
                        .checkSmallModalContent()
                        .closeModalWithIcon();
     })
 
     it('Check large modal closes with the X icon', ()=>{
-        cy.visit('/modal-dialogs');
+        homepagePOM.clickCategoryCard('Alerts, Frame & Windows')
+                   .clickMenuItem('Modal Dialogs');
         modalDialogsPOM.openLargeModal()
                        .checkLargeModalContent()
                        .closeModalWithIcon();
