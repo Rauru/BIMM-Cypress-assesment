@@ -18,4 +18,25 @@ describe('Test modal dialogs functionality', ()=>{
                        .closeSmallModal();
     })
 
+    it('Check large modal opens with its content and closes', ()=>{
+        cy.visit('/modal-dialogs');
+        modalDialogsPOM.openLargeModal()
+                       .checkLargeModalContent()
+                       .closeLargeModal();
+    })
+
+    it('Check small modal closes with the X icon', ()=>{
+        cy.visit('/modal-dialogs');
+        modalDialogsPOM.openSmallModal()
+                       .checkSmallModalContent()
+                       .closeModalWithIcon();
+    })
+
+    it('Check large modal closes with the X icon', ()=>{
+        cy.visit('/modal-dialogs');
+        modalDialogsPOM.openLargeModal()
+                       .checkLargeModalContent()
+                       .closeModalWithIcon();
+    })
+
 })
