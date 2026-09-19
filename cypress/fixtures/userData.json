@@ -16,5 +16,6 @@
     "permanentAddress": "456 Elm St, Othertown, USA",
     "state": "NCR",
     "city": "Delhi",
-    "wrongEmail": "john.doeexample.com"
+    "wrongEmail": "john.doeexample.com",
+    "shortMobile": "555123456"
 }

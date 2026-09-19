@@ -26,3 +26,23 @@ Cypress.Commands.add('goToHomepage', () => {
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+// Types through Chrome's real keyboard input (DevTools protocol) instead of cy.type()'s
+// simulated events. The browser only enforces minlength on text a user actually typed,
+// so fields validated by minlength need this. Works in Chromium browsers (Chrome, Edge, Electron).
+Cypress.Commands.add('typeAsUser', { prevSubject: 'element' }, (subject, text) => {
+  cy.wrap(subject).click();
+  cy.then(async () => {
+    for (const key of String(text)) {
+      await Cypress.automation('remote:debugger:protocol', {
+        command: 'Input.dispatchKeyEvent',
+        params: { type: 'keyDown', key, text: key, unmodifiedText: key },
+      });
+      await Cypress.automation('remote:debugger:protocol', {
+        command: 'Input.dispatchKeyEvent',
+        params: { type: 'keyUp', key },
+      });
+    }
+  });
+  return cy.wrap(subject).should('have.value', String(text));
+});

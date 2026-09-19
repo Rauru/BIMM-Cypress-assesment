@@ -52,8 +52,9 @@ class PracticeFormPage{
     return this;
   }
 
+  // Uses real keyboard input so the browser enforces the 10-digit minlength (see typeAsUser).
   fillMobile(mobile){
-    cy.get(selectors.mobile).type(mobile);
+    cy.get(selectors.mobile).typeAsUser(mobile);
     return this;
   }
 
@@ -126,6 +127,16 @@ class PracticeFormPage{
   // which colours every :invalid field red.
   checkFormWasValidated(){
     cy.get(selectors.form).should('have.class', 'was-validated');
+    return this;
+  }
+
+  checkCityIsDisabled(){
+    cy.get(selectors.cityInput).should('be.disabled');
+    return this;
+  }
+
+  checkCityIsEnabled(){
+    cy.get(selectors.cityInput).should('be.enabled');
     return this;
   }
 

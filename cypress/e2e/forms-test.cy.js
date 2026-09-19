@@ -39,4 +39,23 @@ describe('Test forms elements functionality', ()=>{
                        .checkRequiredFieldErrors();
     })
 
+    it('Check form submission with an invalid email is rejected', ()=>{
+        cy.visit('/automation-practice-form');
+        practiceFormPOM.fillStudentForm({ ...userData, email: userData.wrongEmail })
+                       .submitForm()
+                       .checkFieldError('email');
+    })
+
+    it('Check form submission with a 9 digit mobile number is rejected', ()=>{
+        cy.visit('/automation-practice-form');
+        practiceFormPOM.fillStudentForm({ ...userData, mobile: userData.shortMobile })
+                       .submitForm()
+                       .checkFieldError('mobile');
+    })
+
+    it('Check city is disabled until a state is selected', ()=>{
+        cy.visit('/automation-practice-form');
+        practiceFormPOM.checkCityIsEnabledOnlyAfterSelectingState(userData.state);
+    })
+
 })

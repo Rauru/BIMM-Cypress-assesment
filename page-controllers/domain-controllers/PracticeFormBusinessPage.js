@@ -54,6 +54,23 @@ class PracticeFormBusinessPage{
       .checkResultsModalIsNotDisplayed();
     return this;
   }
+
+  // One invalid field should block the submission and be the field marked red.
+  checkFieldError(field){
+    this.practiceFormPage
+      .checkFormWasValidated()
+      .checkFieldIsInvalid(field)
+      .checkResultsModalIsNotDisplayed();
+    return this;
+  }
+
+  checkCityIsEnabledOnlyAfterSelectingState(state){
+    this.practiceFormPage
+      .checkCityIsDisabled()
+      .selectState(state)
+      .checkCityIsEnabled();
+    return this;
+  }
 }
 
 export default PracticeFormBusinessPage;
