@@ -1,5 +1,6 @@
 import Homepage from '../../page-controllers/domain-controllers/HomepageBusinessPage';
 import PracticeForm from '../../page-controllers/domain-controllers/PracticeFormBusinessPage';
+import { generateRandomStudent } from '../support/generateRandomFixture';
 describe('Test forms elements functionality', ()=>{
     let homepagePOM;
     let practiceFormPOM;
@@ -20,6 +21,16 @@ describe('Test forms elements functionality', ()=>{
         practiceFormPOM.fillStudentForm(userData)
                        .submitForm()
                        .checkSubmittedData(userData);
+    })
+
+    it('Check form submission with randomized data', ()=>{
+        const randomStudent = generateRandomStudent();
+        // Log the generated data so a failure can be reproduced with the same values.
+        cy.log(JSON.stringify(randomStudent));
+        cy.visit('/automation-practice-form');
+        practiceFormPOM.fillStudentForm(randomStudent)
+                       .submitForm()
+                       .checkSubmittedData(randomStudent);
     })
 
     it('Check empty form submission shows required field errors', ()=>{
