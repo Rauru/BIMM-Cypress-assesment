@@ -6,6 +6,7 @@ Cypress + JavaScript tests for [demoqa.com](https://demoqa.com): forms, selectio
 
 - [Summary report](docs/SUMMARY.md): approach, results, flakiness handling and recommendations
 - [Defects](docs/DEFECTS.md): defects found, with steps to reproduce and evidence
+- [Test report](docs/test-report.html): HTML report from a full run (15/15 passed); download it and open it in a browser
 
 ## Completed tasks
 
@@ -44,7 +45,7 @@ npm install
 
 ## Results
 
-Each `npm test` run writes an HTML report to `cypress/reports/index.html` with screenshots of any failures. It is regenerated on every run and not committed.
+Each `npm test` run writes an HTML report to `cypress/reports/index.html` with screenshots of any failures. It is regenerated on every run and not committed; a snapshot from a full run is saved at [docs/test-report.html](docs/test-report.html).
 
 ## Structure
 

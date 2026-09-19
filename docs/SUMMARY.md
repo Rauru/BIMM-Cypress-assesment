@@ -30,7 +30,7 @@ I focused on the three areas named in the brief (forms, selections, dialogs) and
 | Local stability, 10 runs (13 tests) | 10/10 green, no retries needed           |
 | GitHub Actions (Chrome, Ubuntu)     | Passed, including lint and format checks |
 
-The HTML report is generated at `cypress/reports/index.html` and uploaded by CI. Three defects are documented in [DEFECTS.md](DEFECTS.md).
+The HTML report is generated at `cypress/reports/index.html` and uploaded by CI; a snapshot is saved in [test-report.html](test-report.html). Three defects are documented in [DEFECTS.md](DEFECTS.md).
 
 ## Flakiness and how it was handled
 
