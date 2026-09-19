@@ -1,16 +1,13 @@
-/// <reference types="cypress" />
-
-
+import Homepage from '../../page-controllers/domain-controllers/HomepageBusinessPage';
 describe('Test forms elements functionality', ()=>{
-    let Homepage
+    let homepagePOM;
     beforeEach(()=>{
-        cy.goToHomepage();
-        Homepage = new Homepage();
+        cy.visit('/');
+        homepagePOM = new Homepage();
     })
 
-    it('Check form submissison with static text', ()=>{
-        Homepage.clickCategoryCard('Forms');
-        cy.get('.element-list').contains('Text Box').click(); 
+    it('Check form submission with static text', ()=>{
+        homepagePOM.clickCategoryCard('Forms');
     })
 
 })

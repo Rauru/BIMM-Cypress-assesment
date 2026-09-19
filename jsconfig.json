@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+      "types": ["cypress"],
+      "checkJs": false
+    },
+    "include": [
+      "cypress/**/*.js",
+      "page-controllers/**/*.js"
+    ]
+  }
