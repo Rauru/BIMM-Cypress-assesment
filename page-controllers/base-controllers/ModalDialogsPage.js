@@ -1,6 +1,8 @@
 const selectors = {
   showSmallModal: '#showSmallModal',
   modal: '.modal-content',
+  // The outer Bootstrap wrapper; it fades in by animating its opacity.
+  modalWrapper: '.modal',
   smallModalTitle: '#example-modal-sizes-title-sm',
   modalBody: '.modal-body',
   closeSmallModal: '#closeSmallModal',
@@ -59,8 +61,11 @@ class ModalDialogsPage {
     return this;
   }
 
+  // Waits for the fade-in to finish: mid-animation the modal is semi-transparent, which made
+  // accessibility scans intermittently report low colour contrast.
   checkModalIsOpen() {
     cy.get(selectors.modal).should('be.visible');
+    cy.get(selectors.modalWrapper).should('have.css', 'opacity', '1');
     return this;
   }
 
