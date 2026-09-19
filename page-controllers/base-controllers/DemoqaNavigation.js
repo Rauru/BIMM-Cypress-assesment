@@ -5,24 +5,23 @@ const selectors = {
   menuItem: '.menu-list .text',
 };
 
-class DemoqaPage{
-
+class DemoqaPage {
   checkCardIsVisible(card) {
-     cy.contains(selectors.categoryCard, exactText(card)).should('be.visible');
-     return this;
+    cy.contains(selectors.categoryCard, exactText(card)).should('be.visible');
+    return this;
   }
 
-  clickCategoryCard(card){
+  clickCategoryCard(card) {
     cy.contains(selectors.categoryCard, exactText(card)).click();
     return this;
   }
 
-  checkMenuItemIsVisible(name){
+  checkMenuItemIsVisible(name) {
     cy.contains(selectors.menuItem, exactText(name)).should('be.visible');
     return this;
   }
 
-  clickMenuItem(name){
+  clickMenuItem(name) {
     cy.contains(selectors.menuItem, exactText(name)).click();
     return this;
   }

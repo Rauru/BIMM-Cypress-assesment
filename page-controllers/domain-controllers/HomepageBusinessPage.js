@@ -1,20 +1,20 @@
 import DemoqaPage from '../base-controllers/DemoqaNavigation';
 
-class HomepageBusinessPage{
-  constructor(){
+class HomepageBusinessPage {
+  constructor() {
     this.demoqaPage = new DemoqaPage();
   }
 
-  clickCategoryCard(card){
+  clickCategoryCard(card) {
     this.demoqaPage.checkCardIsVisible(card);
     this.demoqaPage.clickCategoryCard(card);
     return this;
   }
 
-  clickMenuItem(name){
+  clickMenuItem(name) {
     this.demoqaPage.checkMenuItemIsVisible(name);
     this.demoqaPage.clickMenuItem(name);
-    return this; 
+    return this;
   }
 }
 

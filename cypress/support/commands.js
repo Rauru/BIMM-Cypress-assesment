@@ -1,5 +1,5 @@
 Cypress.Commands.add('goToHomepage', () => {
-    cy.visit('https://demoqa.com');
+  cy.visit('https://demoqa.com');
 });
 
 Cypress.Commands.add('typeAsUser', { prevSubject: 'element' }, (subject, text) => {

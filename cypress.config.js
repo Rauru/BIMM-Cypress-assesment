@@ -1,4 +1,4 @@
-const { defineConfig } = require("cypress");
+const { defineConfig } = require('cypress');
 
 module.exports = defineConfig({
   e2e: {
@@ -10,11 +10,24 @@ module.exports = defineConfig({
     // faster and stops ad scripts from throwing errors or covering elements.
     // demoqa.com, Google Fonts and cdn.jsdelivr.net are left alone because the site needs them.
     blockHosts: [
-      '*googlesyndication.com', '*doubleclick.net', '*google-analytics.com', 'analytics.google.com',
-      '*googletagmanager.com', '*googletagservices.com', '*adtrafficquality.google',
-      '*criteo.com', '*criteo.net', '*openx.net', '*openxcdn.net', '*adsrvr.org',
-      '*crwdcntrl.net', '*id5-sync.com', '*turn.com', '*creativecdn.com',
-      '*analytics.yahoo.com', 'cdn.ampproject.org',
+      '*googlesyndication.com',
+      '*doubleclick.net',
+      '*google-analytics.com',
+      'analytics.google.com',
+      '*googletagmanager.com',
+      '*googletagservices.com',
+      '*adtrafficquality.google',
+      '*criteo.com',
+      '*criteo.net',
+      '*openx.net',
+      '*openxcdn.net',
+      '*adsrvr.org',
+      '*crwdcntrl.net',
+      '*id5-sync.com',
+      '*turn.com',
+      '*creativecdn.com',
+      '*analytics.yahoo.com',
+      'cdn.ampproject.org',
     ],
   },
 });

@@ -1,11 +1,11 @@
 import PracticeFormPage from '../base-controllers/PracticeFormPage';
 
-class PracticeFormBusinessPage{
-  constructor(){
+class PracticeFormBusinessPage {
+  constructor() {
     this.practiceFormPage = new PracticeFormPage();
   }
 
-  fillStudentForm(user){
+  fillStudentForm(user) {
     this.practiceFormPage
       .fillFirstName(user.firstName)
       .fillLastName(user.lastName)
@@ -21,14 +21,14 @@ class PracticeFormBusinessPage{
     return this;
   }
 
-  submitForm(){
+  submitForm() {
     this.practiceFormPage.submitForm();
     return this;
   }
 
   // The modal formats some values differently from how they are entered,
   // e.g. the date shows as "15 January,1990" and state/city as "NCR Delhi".
-  checkSubmittedData(user){
+  checkSubmittedData(user) {
     const { day, month, year } = user.dateOfBirth;
     this.practiceFormPage
       .checkResultsModalTitle('Thanks for submitting the form')
@@ -44,7 +44,7 @@ class PracticeFormBusinessPage{
     return this;
   }
 
-  checkRequiredFieldErrors(){
+  checkRequiredFieldErrors() {
     this.practiceFormPage
       .checkFormWasValidated()
       .checkFieldIsInvalid('firstName')
@@ -56,7 +56,7 @@ class PracticeFormBusinessPage{
   }
 
   // One invalid field should block the submission and be the field marked red.
-  checkFieldError(field){
+  checkFieldError(field) {
     this.practiceFormPage
       .checkFormWasValidated()
       .checkFieldIsInvalid(field)
@@ -64,11 +64,8 @@ class PracticeFormBusinessPage{
     return this;
   }
 
-  checkCityIsEnabledOnlyAfterSelectingState(state){
-    this.practiceFormPage
-      .checkCityIsDisabled()
-      .selectState(state)
-      .checkCityIsEnabled();
+  checkCityIsEnabledOnlyAfterSelectingState(state) {
+    this.practiceFormPage.checkCityIsDisabled().selectState(state).checkCityIsEnabled();
     return this;
   }
 }

@@ -12,62 +12,61 @@ const selectors = {
   closeIcon: '.modal-header .btn-close',
 };
 
-class ModalDialogsPage{
-
-  clickSmallModalButton(){
+class ModalDialogsPage {
+  clickSmallModalButton() {
     cy.get(selectors.showSmallModal).click();
     return this;
   }
 
-  checkSmallModalTitle(title){
+  checkSmallModalTitle(title) {
     cy.get(selectors.smallModalTitle).should('be.visible').and('have.text', title);
     return this;
   }
 
-  checkModalBody(text){
+  checkModalBody(text) {
     cy.get(selectors.modalBody).should('have.text', text);
     return this;
   }
 
-  clickCloseSmallModal(){
+  clickCloseSmallModal() {
     cy.get(selectors.closeSmallModal).click();
     return this;
   }
 
-  clickLargeModalButton(){
+  clickLargeModalButton() {
     cy.get(selectors.showLargeModal).click();
     return this;
   }
 
   // The large modal is the one rendered with Bootstrap's "modal-lg" size class.
-  checkLargeModalIsDisplayed(){
+  checkLargeModalIsDisplayed() {
     cy.get(selectors.largeModalDialog).should('be.visible');
     return this;
   }
 
-  checkLargeModalTitle(title){
+  checkLargeModalTitle(title) {
     cy.get(selectors.largeModalTitle).should('be.visible').and('have.text', title);
     return this;
   }
 
-  clickCloseLargeModal(){
+  clickCloseLargeModal() {
     cy.get(selectors.closeLargeModal).click();
     return this;
   }
 
-  clickCloseIcon(){
+  clickCloseIcon() {
     cy.get(selectors.closeIcon).click();
     return this;
   }
 
-  checkModalIsOpen(){
+  checkModalIsOpen() {
     cy.get(selectors.modal).should('be.visible');
     return this;
   }
 
   // Bootstrap removes the modal from the page once its closing animation ends;
   // Cypress retries this until it is gone or the timeout is reached.
-  checkModalIsClosed(){
+  checkModalIsClosed() {
     cy.get(selectors.modal).should('not.exist');
     return this;
   }

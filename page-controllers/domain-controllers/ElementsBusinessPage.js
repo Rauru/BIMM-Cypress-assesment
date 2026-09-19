@@ -1,11 +1,11 @@
 import ElementsPage from '../base-controllers/ElementsPage';
 
-class ElementsBusinessPage{
-  constructor(){
+class ElementsBusinessPage {
+  constructor() {
     this.elementsPage = new ElementsPage();
   }
 
-  selectRadioButton(name){
+  selectRadioButton(name) {
     this.elementsPage
       .clickRadioButton(name)
       .checkRadioButtonIsChecked(name)
@@ -14,7 +14,7 @@ class ElementsBusinessPage{
   }
 
   // "No" can't be selected: it is disabled, unchecked and no result text is shown.
-  checkNoRadioButtonIsDisabled(){
+  checkNoRadioButtonIsDisabled() {
     this.elementsPage
       .checkRadioButtonIsDisabled('No')
       .checkRadioButtonIsNotChecked('No')

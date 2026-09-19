@@ -10,36 +10,38 @@ const selectors = {
   resultText: 'p',
 };
 
-class ElementsPage{
-
+class ElementsPage {
   // The radio inputs are covered by their labels, so click the label like a user would.
-  clickRadioButton(name){
+  clickRadioButton(name) {
     cy.contains(selectors.radioLabel, exactText(name)).click();
     return this;
   }
 
-  checkRadioButtonIsChecked(name){
+  checkRadioButtonIsChecked(name) {
     cy.get(selectors.radioInput[name]).should('be.checked');
     return this;
   }
 
-  checkRadioButtonIsNotChecked(name){
+  checkRadioButtonIsNotChecked(name) {
     cy.get(selectors.radioInput[name]).should('not.be.checked');
     return this;
   }
 
-  checkRadioButtonIsDisabled(name){
+  checkRadioButtonIsDisabled(name) {
     cy.get(selectors.radioInput[name]).should('be.disabled');
     return this;
   }
 
   // e.g. "You have selected Yes"
-  checkSelectedResult(name){
-    cy.contains(selectors.resultText, 'You have selected').should('have.text', `You have selected ${name}`);
+  checkSelectedResult(name) {
+    cy.contains(selectors.resultText, 'You have selected').should(
+      'have.text',
+      `You have selected ${name}`,
+    );
     return this;
   }
 
-  checkNoResultIsDisplayed(){
+  checkNoResultIsDisplayed() {
     cy.contains(selectors.resultText, 'You have selected').should('not.exist');
     return this;
   }

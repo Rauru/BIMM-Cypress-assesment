@@ -36,22 +36,47 @@ function generateRandomUser() {
     fullName: generateRandomString(8 + Math.floor(Math.random() * 10)), // 8-17 chars
     email: `${firstPart}.${lastPart}@example.com`,
     currentAddress: generateRandomString(15 + Math.floor(Math.random() * 15)), // 15-29 chars
-    permanentAddress: generateRandomString(15 + Math.floor(Math.random() * 15)) // 15-29 chars
+    permanentAddress: generateRandomString(15 + Math.floor(Math.random() * 15)), // 15-29 chars
   };
 }
 
 // Options offered by the DemoQA Practice Form. Cities depend on the selected state.
 const GENDERS = ['Male', 'Female', 'Other'];
-const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-  'August', 'September', 'October', 'November', 'December'];
-const SUBJECTS = ['Maths', 'English', 'Physics', 'Chemistry', 'Biology', 'Computer Science',
-  'Commerce', 'Accounting', 'Economics', 'Arts', 'History', 'Civics', 'Hindi'];
+const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+const SUBJECTS = [
+  'Maths',
+  'English',
+  'Physics',
+  'Chemistry',
+  'Biology',
+  'Computer Science',
+  'Commerce',
+  'Accounting',
+  'Economics',
+  'Arts',
+  'History',
+  'Civics',
+  'Hindi',
+];
 const HOBBIES = ['Sports', 'Reading', 'Music'];
 const STATES_AND_CITIES = {
-  'NCR': ['Delhi', 'Gurgaon', 'Noida'],
+  NCR: ['Delhi', 'Gurgaon', 'Noida'],
   'Uttar Pradesh': ['Agra', 'Lucknow', 'Merrut'],
-  'Haryana': ['Karnal', 'Panipat'],
-  'Rajasthan': ['Jaipur', 'Jaiselmer'],
+  Haryana: ['Karnal', 'Panipat'],
+  Rajasthan: ['Jaipur', 'Jaiselmer'],
 };
 
 // Generate a random student with valid values for every Practice Form field
